@@ -20,7 +20,7 @@ public class can : MonoBehaviour
     void Update()
     {
         sp = GetComponent<SpriteRenderer>();
-        sp.sprite = sprite_array[GameManager.Instance.board[y, x]];
+        sp.sprite = sprite_array[GameManager.Instance.BOARD[y, x]];
 
     }
 }

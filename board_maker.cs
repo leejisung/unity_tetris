@@ -15,7 +15,6 @@ public class board_maker : MonoBehaviour
             for (int x = 0; x < 10; x++)
             {
                 GameObject cell = Instantiate(can, new Vector3(-2.25f + x * 0.5f, 4.75f - y * 0.5f, 0), Quaternion.identity, transform.parent = parent.transform);
-                cell.transform.position = new Vector3(-2.25f + x * 0.5f, 4.75f - y * 0.5f, 0);
                 cell.GetComponent<can>().x = x;
                 cell.GetComponent<can>().y = y;
             }
