@@ -163,6 +163,10 @@ public class GameManager : MonoBehaviour
                 {
                     continue;
                 }
+                if (yy>19)
+                {
+                    continue;
+                }
                 if ((BOARD[y + yy, x + xx] == block[y, x]) && (block[y,x]!=0))
                 {
                     BOARD[y + yy, x + xx] = 0;
@@ -293,11 +297,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             move(1);
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             move(-1);
         }
@@ -305,6 +309,12 @@ public class GameManager : MonoBehaviour
         {
             spin();
         }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Debug.Log(speed);
+            speed = 0.02f;
+        }
+        else { speed = 1f; }
         denote();
     }
     IEnumerator Timer()
@@ -312,7 +322,7 @@ public class GameManager : MonoBehaviour
         while(true)
         {
             down_block();
-            yield return new WaitForSeconds(speed;);
+            yield return new WaitForSeconds(speed);
         }
     }
 
