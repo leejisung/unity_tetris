@@ -272,7 +272,38 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            remove_line();
             regen();
+        }
+    }
+    void remove_line()
+    {
+        int i = 19;
+        while (i >= 0)
+        {
+            if (BOARD[i, 0] * BOARD[i, 1] * BOARD[i, 2] * BOARD[i, 3] * BOARD[i, 4] * BOARD[i, 5]
+                * BOARD[i, 6] * BOARD[i, 7] * BOARD[i, 8] * BOARD[i, 9] !=0)
+            {
+                for (int j = i; j >0; j--)
+                {
+                    BOARD[j, 0] = BOARD[j - 1, 0];
+                    BOARD[j, 1] = BOARD[j - 1, 1];
+                    BOARD[j, 2] = BOARD[j - 1, 2];
+                    BOARD[j, 3] = BOARD[j - 1, 3];
+                    BOARD[j, 4] = BOARD[j - 1, 4];
+                    BOARD[j, 5] = BOARD[j - 1, 5];
+                    BOARD[j, 6] = BOARD[j - 1, 6];
+                    BOARD[j, 7] = BOARD[j - 1, 7];
+                    BOARD[j, 8] = BOARD[j - 1, 8];
+                    BOARD[j, 9] = BOARD[j - 1, 9];
+                }
+                BOARD[0, 0] = 0; BOARD[0, 1] = 0; BOARD[0, 2] = 0; BOARD[0, 3] = 0; BOARD[0, 4] = 0;
+                BOARD[0, 5] = 0; BOARD[0, 6] = 0; BOARD[0, 7] = 0; BOARD[0, 8] = 0; BOARD[0, 9] = 0;
+            }
+            else
+            {
+                i--;
+            }
         }
     }
     void Start()
@@ -297,11 +328,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             move(1);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             move(-1);
         }
@@ -311,7 +342,6 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            Debug.Log(speed);
             speed = 0.02f;
         }
         else { speed = 1f; }
